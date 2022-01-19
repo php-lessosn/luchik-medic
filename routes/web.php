@@ -25,7 +25,8 @@ Route::get('/private', function () {
 
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin', function () {
-        return "Admin: " . Auth::user()->name;
+        $categories = \App\Models\Category::all();
+        return view('admin.categories', ["categories" => $categories]);
     });
 });
 
