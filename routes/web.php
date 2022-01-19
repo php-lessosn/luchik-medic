@@ -23,9 +23,11 @@ Route::get('/private', function () {
     return "Private: " . Auth::user()->name;
 })->middleware('auth');
 
-Route::get('/admin', function () {
-    return "Admin: " . Auth::user()->name;
-})->middleware('auth')->middleware('admin');
+Route::middleware(['auth', 'admin'])->group(function() {
+    Route::get('/admin', function () {
+        return "Admin: " . Auth::user()->name;
+    });
+});
 
 Route::get('/login', function () {
     return view('login');
