@@ -24,10 +24,7 @@ Route::get('/private', function () {
 })->middleware('auth');
 
 Route::middleware(['auth', 'admin'])->group(function() {
-    Route::get('/admin', function () {
-        $categories = \App\Models\Category::all();
-        return view('admin.categories', ["categories" => $categories]);
-    });
+    Route::resource('/admin/category', \App\Http\Controllers\CategoryController::class);
 });
 
 Route::get('/login', function () {

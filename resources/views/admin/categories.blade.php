@@ -7,9 +7,7 @@
 <body>
 <h1>Categories</h1>
 @foreach ($categories as $category)
-    <li>{{ $category->id }} - {{ $category->title }}</li>
+    <li><a href="/admin/category/{{ $category->id }}/edit">{{ $category->id }} - {{ $category->title }}</a></li>
 @endforeach
-</form>
-</form>
 </body>
 </html>
