@@ -78,7 +78,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $validatedData = $request->validate([
-            'title' => ['required', 'unique:categories', 'min:2'],
+            'title' => ['required', 'unique:App\Models\Category', 'min:2'],
         ]);
 
         $category->update($validatedData);
