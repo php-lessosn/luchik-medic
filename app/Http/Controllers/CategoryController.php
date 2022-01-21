@@ -71,18 +71,13 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Category  $request
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(\App\Http\Requests\Category $request, Category $category)
     {
-        $validatedData = $request->validate([
-            'title' => ['required', 'unique:App\Models\Category', 'min:2'],
-        ]);
-
-        $category->update($validatedData);
-
+        $category->update($request->all());
         return redirect()->intended('/admin/category');
     }
 
