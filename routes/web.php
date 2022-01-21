@@ -23,9 +23,7 @@ Route::get('/private', function () {
     return "Private: " . Auth::user()->name;
 })->middleware('auth');
 
-Route::middleware(['auth', 'admin'])->group(function() {
-    Route::resource('/admin/category', \App\Http\Controllers\CategoryController::class);
-});
+Route::resource('/admin/category', \App\Http\Controllers\CategoryController::class);
 
 Route::get('/login', function () {
     return view('login');

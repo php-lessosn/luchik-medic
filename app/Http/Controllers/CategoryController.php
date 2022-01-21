@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth', 'admin']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -72,7 +78,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $validatedData = $request->validate([
-            'title' => ['required', 'unique:category', 'min:2'],
+            'title' => ['required', 'unique:categories', 'min:2'],
         ]);
 
         $category->update($validatedData);
