@@ -24,6 +24,7 @@ Route::get('/private', function () {
 })->middleware('auth');
 
 Route::resource('/admin/category', \App\Http\Controllers\CategoryController::class);
+Route::resource('/admin/product', \App\Http\Controllers\ProductController::class);
 
 Route::get('/login', function () {
     return view('login');
