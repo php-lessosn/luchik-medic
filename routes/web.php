@@ -19,6 +19,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', function () {
+    return view('welcome');
+})->name('home');
+
+Route::get('/page', function () {
+    return view('page');
+});
+
+
 Route::get('/private', function () {
     return "Private: " . Auth::user()->name;
 })->middleware('auth');
